@@ -13,25 +13,26 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .cors(Customizer.withDefaults())
-            .csrf(csrf -> csrf.disable()) // Désactive CSRF pour faciliter les tests via Postman
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/alumni/**").permitAll() 
-                .requestMatchers("/api/students/**").permitAll() 
-                .requestMatchers("/api/admin/**").permitAll() 
-                .requestMatchers("/api/offers/**").permitAll()
-                .requestMatchers("/api/messages/**").permitAll()
-                .requestMatchers("/api/recruiters/**").permitAll()
-                .requestMatchers("/api/matching/**").permitAll()
-                .requestMatchers("/api/mentorship/**").permitAll()
-                .requestMatchers("/api/experience/**").permitAll()
-                .requestMatchers("/api/events/**").permitAll()
-                .requestMatchers("/api/users/**").permitAll()
-                .requestMatchers("/api/seed/**").permitAll()
-                .requestMatchers("/ws/**").permitAll()
-                .requestMatchers("/error").permitAll()
-                .anyRequest().authenticated()
-            );
+                .cors(Customizer.withDefaults())
+                .cors(Customizer.withDefaults())
+                .csrf(csrf -> csrf.disable()) // Désactive CSRF pour faciliter les tests via Postman
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/alumni/**").permitAll()
+                        .requestMatchers("/api/students/**").permitAll()
+                        .requestMatchers("/api/admin/**").permitAll()
+                        .requestMatchers("/api/offers/**").permitAll()
+                        .requestMatchers("/api/messages/**").permitAll()
+                        .requestMatchers("/api/recruiters/**").permitAll()
+                        .requestMatchers("/api/matching/**").permitAll()
+                        .requestMatchers("/api/mentorship/**").permitAll()
+                        .requestMatchers("/api/experience/**").permitAll()
+                        .requestMatchers("/api/events/**").permitAll()
+                        .requestMatchers("/api/users/**").permitAll()
+                        .requestMatchers("/api/seed/**").permitAll()
+                        .requestMatchers("/ws/**").permitAll()
+                        .requestMatchers("/error").permitAll()
+                        .anyRequest().authenticated()
+                );
         return http.build();
     }
 }
